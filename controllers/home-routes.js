@@ -33,6 +33,15 @@ router.get('/', (req, res) => {
     });
 });
 
+// redirecting users to homepage once they log in
+router.get('/login', (req, res) => {
+    if(req.session.loggedIn) {
+        res.redirect('/');
+        return; 
+    }
+    res.render('login');
+});
+
 // rendering sign up page 
 router.get('/signup', (req, res) => {
     res.render('signup');
